@@ -56,7 +56,6 @@ namespace CryptoViewer {
 
       if (System.Diagnostics.Debugger.IsAttached) {
         this.DebugSettings.EnableFrameRateCounter = true;
-
       }
     }
 
