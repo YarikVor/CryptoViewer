@@ -7,16 +7,35 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-  <SplitView x:Name="splitView" Background="White" PaneBackground="LightBlue">
-    <SplitView.Pane>
-      <StackPanel>
-        <TextBlock Text="Выдвижная панель" />
-      </StackPanel>
-    </SplitView.Pane>
-    <SplitView.Content>
-      <Grid>
-        <Button Content="Переключить вид" HorizontalAlignment="Center" Click="Button_Click" />
-      </Grid>
-    </SplitView.Content>
-  </SplitView>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
+      <Button Content="☰" Click="buttonOpen_Click"/>
+      <TextBlock Text="Test" Padding="8 0"  VerticalAlignment="Center"/>
+    </StackPanel>
+    <SplitView x:Name="splitView" Grid.Column="0" Grid.Row="1" DisplayMode="CompactOverlay" CompactPaneLength="34" OpenPaneLength="100" BorderBrush="Black" BorderThickness="5,10,15,20">
+      <SplitView.Pane>
+        <RelativePanel>
+          <TextBlock Text="Text"/>
+
+        </RelativePanel>
+      </SplitView.Pane>
+      <SplitView.Content>
+        <RelativePanel>
+          <Button x:Name="loginButton" Content="Login"
+                RelativePanel.AlignTopWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"/>
+          <Button x:Name="loginBox" Content="Login" 
+                 RelativePanel.LeftOf="loginButton"
+                 RelativePanel.AlignLeftWithPanel="True" />
+        </RelativePanel>
+      </SplitView.Content> 
+      
+    </SplitView>
+  </Grid>
 </Page>

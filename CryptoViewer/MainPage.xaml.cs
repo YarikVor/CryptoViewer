@@ -29,11 +29,15 @@ namespace CryptoViewer {
     }
 
     private void Button_Click(object sender, RoutedEventArgs e) {
-      splitView.IsPaneOpen = !splitView.IsPaneOpen;
+
     }
 
     private void Button_Click_1(object sender, RoutedEventArgs e) {
 
+    }
+
+    private void buttonOpen_Click(object sender, RoutedEventArgs e) {
+      splitView.IsPaneOpen = !splitView.IsPaneOpen;
     }
   }
 }

@@ -54,9 +54,9 @@ namespace CryptoViewer {
         Window.Current.Activate();
       }
 
-      if (System.Diagnostics.Debugger.IsAttached) {
+/*      if (System.Diagnostics.Debugger.IsAttached) {
         this.DebugSettings.EnableFrameRateCounter = true;
-      }
+      }*/
     }
 
     /// <summary>
