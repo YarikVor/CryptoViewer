@@ -1,0 +1,64 @@
+﻿<Page
+    x:Class="CryptoViewer.MainPage"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:local="using:CryptoViewer"
+  mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
+      <Button Content="☰" Click="buttonOpen_Click" />
+      <TextBlock x:Name="TextTitle" Text="Test" Padding="8 0"  VerticalAlignment="Center" />
+    </StackPanel>
+    <SplitView x:Name="splitView" Grid.Column="0" Grid.Row="1" DisplayMode="CompactOverlay" CompactPaneLength="34" OpenPaneLength="170" BorderBrush="Black" BorderThickness="5 10 15 20">
+      <SplitView.Pane>
+        <Grid>
+          <StackPanel HorizontalAlignment="Stretch">
+            <Button x:Name="homeButton" HorizontalAlignment="Stretch" Padding="5 4" HorizontalContentAlignment="Left" Click="homeButton_Click">
+              <StackPanel Orientation="Horizontal">
+                <SymbolIcon Symbol="Home" HorizontalAlignment="Left" />
+                <TextBlock x:Uid="homeTitle" HorizontalAlignment="Right" Margin="7 0 0 0" />
+              </StackPanel>
+            </Button>
+            <Button x:Name="starButton" HorizontalAlignment="Stretch" Padding="5 4" HorizontalContentAlignment="Left" Click="starButton_Click">
+              <StackPanel Orientation="Horizontal">
+                <SymbolIcon Symbol="OutlineStar" HorizontalAlignment="Left" />
+                <TextBlock x:Uid="starTitle"  HorizontalAlignment="Right" Margin="7 0 0 0" />
+              </StackPanel>
+            </Button>
+            <Button  HorizontalAlignment="Stretch" Padding="5 4" HorizontalContentAlignment="Left" Click="calcButton_Click">
+              <StackPanel Orientation="Horizontal">
+                <SymbolIcon Symbol="Calculator" HorizontalAlignment="Left" />
+                <TextBlock x:Uid="calcTitle" HorizontalAlignment="Right" Margin="7 0 0 0" />
+              </StackPanel>
+            </Button>
+            <Button HorizontalAlignment="Stretch" Padding="5 4" HorizontalContentAlignment="Left" Click="settingButton_Click">
+              <StackPanel Orientation="Horizontal">
+                <SymbolIcon Symbol="Setting" HorizontalAlignment="Left" />
+                <TextBlock x:Uid="setting" HorizontalAlignment="Right" Margin="7 0 0 0" />
+              </StackPanel>
+            </Button>
+          </StackPanel>
+          <Rectangle x:Name="rectSelect" Height="33" Width="4" Fill="{ThemeResource ComboBoxItemSelectedPointerOverBackgroundThemeBrush}" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        </Grid>
+
+      </SplitView.Pane>
+      <SplitView.Content>
+        <Grid Padding="4">
+          <local:HomeSelect x:Name="homeSelect"/>
+          <local:StarSelect x:Name="starSelect" OverrideVisibility="Collapsed" Visibility="Collapsed" />
+          <local:CalcSelect x:Name="calcSelect" Visibility="Collapsed" />
+          <local:SettingSelect x:Name="settingSelect" Visibility="Collapsed" />
+        </Grid>
+      </SplitView.Content>
+    </SplitView>
+  </Grid>
+</Page>
