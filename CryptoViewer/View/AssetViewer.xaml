@@ -1,0 +1,101 @@
+﻿<Page
+    x:Class="CryptoViewer.AssetViewer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CryptoViewer"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition />
+    </Grid.RowDefinitions>
+    <RelativePanel Grid.Row="0" Background="{ThemeResource AppBarBorderThemeBrush}" Padding="12 8">
+      <StackPanel Orientation="Vertical">
+        <StackPanel  Orientation="Horizontal">
+          <TextBlock x:Name="assetName" Text ="{x:Bind asset.name}" />
+          <TextBlock Text ="{x:Bind asset.price}" />
+        </StackPanel>
+
+        <TextBlock FontSize="10" FontWeight="Light" x:Name="name" Text ="{x:Bind asset.assetId}" />
+        <TextBlock FontSize="10" FontWeight="Light" Text ="{x:Bind asset.status}" />
+      </StackPanel>
+
+      <StackPanel RelativePanel.AlignRightWithPanel="True">
+        <TextBlock Text="{x:Bind asset.ethereumContractAddress}" />
+        <TextBlock Text ="{x:Bind asset.lastUpdate}" />
+      </StackPanel>
+
+      <TextBlock x:Name="address" Text="{x:Bind asset.ethereumContractAddress}" />
+    </RelativePanel>
+    <ScrollViewer Grid.Row="1" Padding="4 4 16 4">
+      <StackPanel>
+        <Grid Padding="8">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+          </Grid.ColumnDefinitions>
+
+          <Grid Grid.Column="0">
+            <StackPanel>
+              <TextBlock x:Uid="vol24h"  HorizontalAlignment="Center" />
+              <TextBlock Text="{x:Bind asset.volume24h}" HorizontalAlignment="Center" />
+            </StackPanel>
+          </Grid>
+          <StackPanel Grid.Column="1">
+            <TextBlock x:Uid="ch1h" HorizontalAlignment="Center" />
+            <TextBlock Text="{x:Bind asset.change1h}" HorizontalAlignment="Center" />
+            <TextBlock Text="{x:Bind asset.deltaChange1h}" HorizontalAlignment="Center" />
+          </StackPanel>
+          <StackPanel Grid.Column="2">
+            <TextBlock x:Uid="ch24h" HorizontalAlignment="Center" />
+            <TextBlock Text="{x:Bind asset.change24h}" HorizontalAlignment="Center" />
+            <TextBlock Text="{x:Bind asset.deltaChange24h}" HorizontalAlignment="Center" />
+          </StackPanel>
+          <StackPanel Grid.Column="3">
+            <TextBlock x:Uid="ch7d" HorizontalAlignment="Center" />
+            <TextBlock Text="{x:Bind asset.change7d}" HorizontalAlignment="Center" />
+            <TextBlock Text="{x:Bind asset.deltaChange7d}" HorizontalAlignment="Center" />
+          </StackPanel>
+        </Grid>
+        <Grid Padding="4 6">
+          <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+          </Grid.ColumnDefinitions>
+
+          <TextBlock Grid.Row="0" Grid.Column="0" TextWrapping="WrapWholeWords" FontWeight="Bold" x:Uid="link" VerticalAlignment="Center" />
+          <HyperlinkButton x:Name="link" Grid.Row="0" Grid.Column="1" FontWeight="Bold" Content="{x:Bind asset.website}" />
+          <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="WrapWholeWords" FontWeight="Bold" x:Uid="totalSupply" />
+          <TextBlock Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" FontWeight="Bold" Text="{x:Bind asset.totalSupply}" />
+          <TextBlock Grid.Row="2" Grid.Column="0" TextWrapping="WrapWholeWords" Padding="0 0 8 0" FontWeight="Bold" x:Uid="maxSupply" />
+          <TextBlock Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" FontWeight="Bold" Text="{x:Bind asset.maxSupply}" />
+          <TextBlock Grid.Row="3" Grid.Column="0" TextWrapping="WrapWholeWords" FontWeight="Bold" x:Uid="marcetCap" />
+          <TextBlock Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" FontWeight="Bold" Text="{x:Bind asset.marcetCap}" />
+        </Grid>
+        <TextBlock x:Uid="desc" />
+        <TextBlock Padding="4" TextWrapping="Wrap" Text="{x:Bind asset.description}" />
+        <Grid x:Name="gridExchanges">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+        </Grid>
+      </StackPanel>
+    </ScrollViewer>
+  </Grid>
+</Page>
