@@ -1,12 +1,11 @@
-﻿using CryptingUp;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 
 namespace CryptingUp.Tests {
+
   [TestClass]
   public class BaseAssetTests {
+
     [TestMethod]
     public void GetAll_IsValidGet() {
       var values = BaseAsset.GetAllAsArray().Skip(3).First();
@@ -16,7 +15,6 @@ namespace CryptingUp.Tests {
       Assert.IsNotNull(values.asset_id);
       Assert.IsNotNull(values.name);
     }
-
 
     [TestMethod]
     public void GetById_IsValidGet() {
@@ -29,13 +27,11 @@ namespace CryptingUp.Tests {
       Assert.AreEqual(expected.name, expected.name);
     }
 
-
     [TestMethod]
     public void GetAsset_GetSelf() {
       var expected = Asset.GetAllAsArray().Skip(3).First();
 
       var actual = expected.GetAsset();
-
 
       Assert.IsNotNull(actual);
 
@@ -48,7 +44,6 @@ namespace CryptingUp.Tests {
       var baseExpected = BaseAsset.GetAllAsArray().Skip(3).First();
       var expected = Asset.GetAll().Skip(3).First();
 
-      
       var actual = baseExpected.GetAsset();
 
       Assert.IsNotNull(actual);
@@ -59,7 +54,7 @@ namespace CryptingUp.Tests {
     }
 
     [TestMethod]
-    public void GetById_IsCorrectGetting(){
+    public void GetById_IsCorrectGetting() {
       var expected = Asset.GetAll().First();
 
       var result = Asset.GetById(expected.asset_id);
@@ -81,6 +76,5 @@ namespace CryptingUp.Tests {
 
       Assert.IsTrue(actual.Any(e => e.name == expectedName));
     }
-
   }
 }
