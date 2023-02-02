@@ -1,13 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CryptingUp.Tests {
+
   [TestClass]
   public class MarketTests {
+
     [TestMethod]
     public void GetAll_IsValidGet() {
       var values = Market.GetAll().Skip(3).First();
@@ -17,7 +15,6 @@ namespace CryptingUp.Tests {
       Assert.IsNotNull(values.exchange_id);
       Assert.IsNotNull(values.status);
     }
-
 
     [TestMethod]
     public void GetAllAsArray_IsCorrectGetting() {
@@ -32,7 +29,6 @@ namespace CryptingUp.Tests {
     public void GetExchange_IsValid() {
       var market = Market.GetAll().Skip(3).First();
 
-      
       var expected = Exchange.GetById(market.exchange_id);
 
       var actual = market.GetExchange();
@@ -45,7 +41,6 @@ namespace CryptingUp.Tests {
     public void GetBaseAsset_IsValid() {
       var market = Market.GetAll().Skip(3).First();
 
-
       var expected = Asset.GetById(market.base_asset);
 
       var actual = market.GetBaseAsset();
@@ -53,7 +48,6 @@ namespace CryptingUp.Tests {
       Assert.IsNotNull(actual);
       Assert.AreEqual(expected.asset_id, actual.asset_id);
     }
-
 
     [TestMethod]
     public void GetQuoteAsset_IsValid() {
@@ -77,6 +71,12 @@ namespace CryptingUp.Tests {
       Assert.IsTrue(actual.All(e => e.exchange_id == market.exchange_id));
     }
 
+    [TestMethod]
+    public void GetBarketsByAssetId_IsValid() {
+      var asset = Asset.GetAll().First();
+      var market = Market.GetByAssetId(asset.asset_id).First();
 
+      Assert.IsTrue(market.quote_asset == asset.asset_id || market.base_asset == asset.asset_id, $"'{asset.asset_id}' is not equal '{market.base_asset}' or {market.quote_asset}");
+    }
   }
 }

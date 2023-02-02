@@ -1,15 +1,19 @@
-﻿using System;
+﻿using CryptoViewer.Local;
+using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 namespace CryptoViewer {
+
   /// <summary>
   /// Provides application-specific behavior to supplement the default Application class.
   /// </summary>
-  sealed partial class App : Application {
+  public sealed partial class App : Application {
+
     /// <summary>
     /// Initializes the singleton application object.  This is the first line of authored code
     /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -17,6 +21,11 @@ namespace CryptoViewer {
     public App() {
       this.InitializeComponent();
       this.Suspending += OnSuspending;
+
+      var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+      LocalHashListAsset.Init(localSettings.Values);
+
+      Application.Current.RequestedTheme = LocalData.Theme;
     }
 
     /// <summary>
@@ -54,9 +63,17 @@ namespace CryptoViewer {
         Window.Current.Activate();
       }
 
-/*      if (System.Diagnostics.Debugger.IsAttached) {
-        this.DebugSettings.EnableFrameRateCounter = true;
-      }*/
+      SystemNavigationManager.GetForCurrentView().BackRequested += AssetViewer_BackRequested;
+
+      /*      if (System.Diagnostics.Debugger.IsAttached) {
+              this.DebugSettings.EnableFrameRateCounter = true;
+            }*/
+    }
+
+    private void AssetViewer_BackRequested(object sender, BackRequestedEventArgs e) {
+      Frame rootFrame = Window.Current.Content as Frame;
+      SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Disabled;
+      rootFrame.GoBack();
     }
 
     /// <summary>
@@ -64,7 +81,7 @@ namespace CryptoViewer {
     /// </summary>
     /// <param name="sender">The Frame which failed navigation</param>
     /// <param name="e">Details about the navigation failure</param>
-    void OnNavigationFailed(object sender, NavigationFailedEventArgs e) {
+    private void OnNavigationFailed(object sender, NavigationFailedEventArgs e) {
       throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
     }
 

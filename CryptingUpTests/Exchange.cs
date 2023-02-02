@@ -1,13 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CryptingUp.Tests {
+
   [TestClass]
   public class ExchangeTests {
+
     [TestMethod]
     public void GetAllAsArray_IsCorrectGetting() {
       var result = Exchange.GetAllAsArray()[0];
@@ -15,7 +13,6 @@ namespace CryptingUp.Tests {
       Assert.IsNotNull(result);
       Assert.AreEqual("Binance", result.name);
     }
-
 
     [TestMethod]
     public void GetById_IsValidGet() {
@@ -28,8 +25,12 @@ namespace CryptingUp.Tests {
       Assert.AreEqual(expected.name, expected.name);
     }
 
+    [TestMethod]
+    public void GetMarkets_IsValid() {
+      var expected = Exchange.GetAllAsArray().First();
+      var market = expected.GetMarkets().First();
 
-
-
+      Assert.AreEqual(expected.exchange_id, market.exchange_id, true);
+    }
   }
 }

@@ -2,13 +2,12 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CryptingUp {
 
   [JsonObject]
-  public class Asset : BaseAsset {
-    public const string JSON_PROPERTY_NAME = "assets";
+  public partial class Asset : BaseAsset {
+    public new const string JSON_PROPERTY_NAME = "assets";
     public Dictionary<string, QuoteAsset> quote { get; set; }
 
     public IEnumerable<QuoteAsset> quotes {
@@ -26,11 +25,11 @@ namespace CryptingUp {
     public string pegged { get; set; }
     public decimal price { get; set; }
     public decimal volume_24h { get; set; }
-    public float change_1h { get; set; }
-    public float change_24h { get; set; }
-    public float change_7d { get; set; }
-    public float total_supply { get; set; }
-    public float circulating_supply { get; set; }
+    public decimal change_1h { get; set; }
+    public decimal change_24h { get; set; }
+    public decimal change_7d { get; set; }
+    public decimal total_supply { get; set; }
+    public decimal circulating_supply { get; set; }
     public long max_supply { get; set; }
     public decimal market_cap { get; set; }
     public decimal fully_diluted_market_cap { get; set; }
@@ -38,11 +37,24 @@ namespace CryptingUp {
     public DateTime created_at { get; set; }
     public DateTime updated_at { get; set; }
 
-    public static Asset GetById(string asset_id) {
-      return GetAll().FirstOrDefault(e => e.asset_id == asset_id);
+    public static new Asset GetById(string asset_id) {
+      string res = CryptingUpMethods.SendGetRequest($"assets/{asset_id}");
+
+      var jObject = JObject.Parse(res);
+      var entity = jObject["asset"].ToObject<Asset>();
+
+      return entity;
     }
 
-    public new static IEnumerable<Asset> GetAll() {
+    public StatusAsset GetStatus() {
+      if (Enum.TryParse<StatusAsset>(status, true, out StatusAsset res)) {
+        return res;
+      }
+      return StatusAsset.Stale;
+    }
+
+    /// <remarks>Not Valid works when data is received partially. Apply the function <see cref="GetAllAsArray"/></remarks>
+    public static IEnumerable<Asset> GetAll() {
       string start = "";
       while (true) {
         string res = CryptingUpMethods.SendGetRequest($"assets?size=16&start={start}");

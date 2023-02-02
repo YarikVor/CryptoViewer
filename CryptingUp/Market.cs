@@ -46,7 +46,7 @@ namespace CryptingUp {
     public IEnumerable<Market> GetByExchangeId() {
       return GetByExchangeId(exchange_id);
     }
-
+    /// <remarks>Not Valid works when data is received partially. Apply the function <see cref="GetAllAsArray"/></remarks>
     public static IEnumerable<Market> GetByExchangeId(string exchange_id) {
       string start = "";
       while (true) {
@@ -79,6 +79,16 @@ namespace CryptingUp {
 
     public static Market[] GetAllAsArray() {
       string res = CryptingUpMethods.SendGetRequest($"markets?size=0");
+
+      var jObject = JObject.Parse(res);
+      var entities = jObject[JSON_PROPERTY_NAME].ToObject<Market[]>();
+
+      return entities;
+    }
+
+
+    public static IEnumerable<Market> GetByAssetId(string asset_id) {
+      string res = CryptingUpMethods.SendGetRequest($"assets/{asset_id}/markets?size=0");
 
       var jObject = JObject.Parse(res);
       var entities = jObject[JSON_PROPERTY_NAME].ToObject<Market[]>();

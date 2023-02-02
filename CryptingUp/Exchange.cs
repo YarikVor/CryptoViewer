@@ -33,8 +33,6 @@ namespace CryptingUp {
       return GetAllAsArray().FirstOrDefault(e => e.exchange_id == exchange_id);
     }
 
-
-
     public static Exchange[] GetAllAsArray() {
       string res = CryptingUpMethods.SendGetRequest($"exchanges?size=0");
 

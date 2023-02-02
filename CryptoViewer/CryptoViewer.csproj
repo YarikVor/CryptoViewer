@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CryptoViewer</RootNamespace>
     <AssemblyName>CryptoViewer</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
+    <DefaultLanguage>uk-UA</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
@@ -119,11 +119,31 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="View\AssetControl.xaml.cs">
+      <DependentUpon>AssetControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AssetViewer.xaml.cs">
+      <DependentUpon>AssetViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AssetViewModel.cs" />
+    <Compile Include="Model\PartialMarketViewModel.cs" />
+    <Compile Include="Methods\ResourseMethods.cs" />
+    <Compile Include="View\Select\CalcSelect.xaml.cs">
+      <DependentUpon>CalcSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Select\HomeSelect.xaml.cs">
+      <DependentUpon>HomeSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Phone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Select\SettingSelect.xaml.cs">
+      <DependentUpon>SettingSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Select\StarSelect.xaml.cs">
+      <DependentUpon>StarSelect.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -145,15 +165,57 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
+    <Page Include="View\AssetControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AssetViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Select\CalcSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Select\HomeSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Select\SettingSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Select\StarSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.14</Version>
+      <Version>6.1.12</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CryptingUp\CryptingUp.csproj">
+      <Project>{8c6f1560-d1f0-411a-9fd8-0b370444bf7e}</Project>
+      <Name>CryptingUp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CryptoViewer.LocalData\CryptoViewer.Local.csproj">
+      <Project>{858819fd-72c5-47c9-9adb-fd429434f9c7}</Project>
+      <Name>CryptoViewer.Local</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Methods\Methods.csproj">
+      <Project>{fea808c0-f837-471a-a08e-b7ccf09792e2}</Project>
+      <Name>Methods</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+    <PRIResource Include="Strings\uk-UA\Resources.resw" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

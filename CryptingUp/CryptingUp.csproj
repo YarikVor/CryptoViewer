@@ -129,15 +129,25 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuoteExchange.cs" />
     <Compile Include="QuoteMarket.cs" />
+    <Compile Include="StatusAsset.cs" />
     <EmbeddedResource Include="Properties\CryptingUp.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.14</Version>
+      <Version>6.1.12</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.2</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Methods\Methods.csproj">
+      <Project>{fea808c0-f837-471a-a08e-b7ccf09792e2}</Project>
+      <Name>Methods</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CryptingUp.cd" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
