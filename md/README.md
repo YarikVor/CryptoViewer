@@ -1,7 +1,8 @@
+Link to ukrainian "readme" avaible [here](/README.md)
 # Welcome to **[CryptoViewer](https://github.com/YarikVor/CryptoViewer)**! - currency viewer
 CoinViewer - program for viewing currencies. Supports searching, viewing and saving currencies, and also contains a calculator for converting currency from one value to another. Requires internet! Built on the [CryptingUp](https://cryptingup.com/) API
 
-![]()
+![](/md/start.png)
 
 ## Menu
 The program interface consists of the following elements:
