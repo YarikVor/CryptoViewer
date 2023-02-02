@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="CryptoViewer.AssetControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="using:CryptoViewer"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
+  <UserControl.Content>
+    <RelativePanel x:Name="Panel" x:FieldModifier="Public" UseLayoutRounding="True" VerticalAlignment="Top" Padding="4 2" BorderThickness="1" Margin="0 0 0 4" Background="{ThemeResource ButtonPointerOverBackgroundThemeBrush}">
+      <SymbolIcon x:Name="symbolIcon" x:FieldModifier="public" Symbol="OutlineStar" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="8" />
+      <StackPanel x:Name="titlePanel" x:FieldModifier="public"  RelativePanel.AlignLeftWithPanel="True" RelativePanel.LeftOf="symbolIcon">
+        <TextBlock Text="{x:Bind Title}" FontWeight="Bold" />
+        <TextBlock Text="{x:Bind Subtitle}" FontWeight="Light" FontSize="10" Foreground="Gray" />
+      </StackPanel>
+    </RelativePanel>
+  </UserControl.Content>
+</UserControl>
