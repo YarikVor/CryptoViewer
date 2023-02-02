@@ -2,8 +2,10 @@
 using System.Linq;
 
 namespace CryptingUp.Tests {
+
   [TestClass]
   public class BaseTests {
+
     public void QuoteAsset_IsValid() {
       var actual = Asset.GetAll().Skip(3).First();
       Assert.IsNotNull(actual.quotes);
@@ -13,7 +15,6 @@ namespace CryptingUp.Tests {
 
       var entity = dict.First();
 
-      
       Assert.AreNotEqual(null, entity.currency);
       Assert.AreNotEqual(null, entity.volume_24h);
 
@@ -32,12 +33,10 @@ namespace CryptingUp.Tests {
 
       var entity = dict.First();
 
-
       Assert.AreNotEqual(null, entity.currency);
       Assert.AreNotEqual(null, entity.volume_24h);
 
       Assert.AreNotEqual(0, entity.price);
-
     }
 
     public void QuoteExchange_IsValid() {
@@ -49,10 +48,8 @@ namespace CryptingUp.Tests {
 
       var entity = dict.First();
 
-
       Assert.AreNotEqual(null, entity.currency);
       Assert.AreNotEqual(null, entity.volume_24h);
     }
-
   }
 }
