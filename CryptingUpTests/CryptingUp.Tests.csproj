@@ -116,7 +116,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <SDKReference Include="TestPlatform.Universal, Version=$(UnitTestPlatformVersion)" />
+    <SDKReference Include="TestPlatform.Universal, Version=17.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseAssetTests.cs" />
@@ -153,16 +153,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.14</Version>
+      <Version>6.1.12</Version>
     </PackageReference>
     <PackageReference Include="MSTest.TestAdapter">
-      <Version>2.2.7</Version>
+      <Version>2.2.6</Version>
     </PackageReference>
     <PackageReference Include="MSTest.TestFramework">
       <Version>2.2.7</Version>
-    </PackageReference>
-    <PackageReference Include="System.Console">
-      <Version>4.3.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +167,9 @@
       <Project>{8c6f1560-d1f0-411a-9fd8-0b370444bf7e}</Project>
       <Name>CryptingUp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
