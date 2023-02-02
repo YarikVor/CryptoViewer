@@ -20,8 +20,6 @@ namespace CryptingUp {
       return GetAllAsArray().FirstOrDefault(e => e.asset_id == asset_id);
     }
 
-
-
     public static BaseAsset[] GetAllAsArray() {
       string res = CryptingUpMethods.SendGetRequest($"assetsoverview");
 
@@ -29,6 +27,10 @@ namespace CryptingUp {
       var entities = jObject[JSON_PROPERTY_NAME].ToObject<BaseAsset[]>();
 
       return entities;
+    }
+
+    public IEnumerable<Market> GetMarkets() {
+      return Market.GetByAssetId(asset_id);
     }
   }
 }
