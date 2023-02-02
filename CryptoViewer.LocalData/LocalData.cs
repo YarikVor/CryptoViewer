@@ -17,7 +17,7 @@ namespace CryptoViewer.Local {
         return "";
       }
       set {
-        if (value == "en_US" || value == "uk_UA") {
+        if (value == "en-US" || value == "uk-UA") {
           LocalHashListAsset.Values[PROPERTY_LANG] = value;
         }
       }

@@ -2,6 +2,7 @@
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Globalization;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -26,6 +27,7 @@ namespace CryptoViewer {
       LocalHashListAsset.Init(localSettings.Values);
 
       Application.Current.RequestedTheme = LocalData.Theme;
+      ApplicationLanguages.PrimaryLanguageOverride = LocalData.LangName;
     }
 
     /// <summary>
